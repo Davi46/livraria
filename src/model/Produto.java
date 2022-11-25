@@ -5,11 +5,14 @@ public class Produto {
     private int id;
     private double valor;
 
-    public Produto(String nome, int id, double valor, TipoProduto tipoProduto) {
+    private boolean isAdulto;
+
+    public Produto(String nome, int id, double valor, TipoProduto tipoProduto, boolean isAdulto) {
         this.nome = nome;
         this.id = id;
         this.valor = valor;
         this.tipoProduto = tipoProduto;
+        this.isAdulto = isAdulto;
     }
 
     private TipoProduto tipoProduto;
@@ -34,6 +37,14 @@ public class Produto {
         return valor;
     }
 
+    public boolean isAdulto() {
+        return isAdulto;
+    }
+
+    public void setAdulto(boolean adulto) {
+        isAdulto = adulto;
+    }
+
     public void setValor(double valor) {
         this.valor = valor;
     }
@@ -53,6 +64,8 @@ public class Produto {
                 ", id=" + id +
                 ", valor=" + valor +
                 ", tipoProduto=" + tipoProduto +
+                ", isAdulto= " + this.isAdulto() +
+                ", isAdulto=" + isAdulto +
                 '}';
     }
 }

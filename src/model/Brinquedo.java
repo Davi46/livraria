@@ -3,8 +3,8 @@ package model;
 public class Brinquedo extends Produto{
     private String tipo;
 
-    public Brinquedo(String nome, int id, double valor, TipoProduto tipoProduto, String tipo) {
-        super(nome, id, valor, tipoProduto);
+    public Brinquedo(String nome, int id, double valor, TipoProduto tipoProduto, String tipo, boolean isAdulto) {
+        super(nome, id, valor, tipoProduto, isAdulto);
         this.tipo = tipo;
     }
 
@@ -23,6 +23,7 @@ public class Brinquedo extends Produto{
                 ", id=" + this.getId() +
                 ", valor=" + this.getValor() +
                 ", tipoProduto=" + this.getTipoProduto() +
+                ", isAdulto= " + this.isAdulto() +
                 ", tipo='" + tipo + '\'' +
                 '}';
     }

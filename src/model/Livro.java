@@ -7,8 +7,8 @@ public class Livro extends Produto{
     private String escritor;
     private String editora;
 
-    public Livro(String nome, int id, double valor, TipoProduto tipoProduto, List<Genero> generos, String escritor, String editora) {
-        super(nome, id, valor, tipoProduto);
+    public Livro(String nome, int id, double valor, TipoProduto tipoProduto, List<Genero> generos, String escritor, String editora, boolean isAdulto) {
+        super(nome, id, valor, tipoProduto, isAdulto);
         this.generos = generos;
         this.escritor = escritor;
         this.editora = editora;
@@ -45,6 +45,7 @@ public class Livro extends Produto{
                 ", id=" + this.getId() +
                 ", valor=" + this.getValor() +
                 ", tipoProduto=" + this.getTipoProduto() +
+                ", isAdulto= " + this.isAdulto() +
                 ", generos=" + generos +
                 ", escritor='" + escritor + '\'' +
                 ", editora='" + editora + '\'' +

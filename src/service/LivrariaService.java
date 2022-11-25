@@ -1,21 +1,14 @@
 package service;
 
-
-import model.Caixa;
-import model.Produto;
-import model.TipoProduto;
-
 public class LivrariaService {
      private CarrinhoCompraService carrinhoCompraService;
-     private Caixa caixa;
 
      public LivrariaService() {
-          this.caixa = new Caixa();
           this.carrinhoCompraService = carrinhoCompraService;
      }
 
      public void novaCompra(){
-          carrinhoCompraService = new CarrinhoCompraService(caixa);
+          carrinhoCompraService = new CarrinhoCompraService();
      }
 
      public void addItemCarrinho(int idProduto, int quantidade){
@@ -26,7 +19,7 @@ public class LivrariaService {
           }
      }
 
-     public void finalizarCompra(){
+     public void finalizarCompra() throws Exception {
           carrinhoCompraService.checkout();
      }
 }

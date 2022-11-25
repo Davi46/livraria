@@ -8,8 +8,8 @@ public class Filme extends Produto {
     private List<Genero> generos;
     private List<String> produtores;
 
-    public Filme(String nome, int id, double valor, TipoProduto tipoProduto, String estudio, List<String> diretores, List<Genero> generos, List<String> produtores) {
-        super(nome, id, valor, tipoProduto);
+    public Filme(String nome, int id, double valor, TipoProduto tipoProduto, String estudio, List<String> diretores, List<Genero> generos, List<String> produtores, boolean isAdulto) {
+        super(nome, id, valor, tipoProduto, isAdulto);
         this.estudio = estudio;
         this.diretores = diretores;
         this.generos = generos;
@@ -55,6 +55,7 @@ public class Filme extends Produto {
                 ", id=" + this.getId() +
                 ", valor=" + this.getValor() +
                 ", tipoProduto=" + this.getTipoProduto() +
+                ", isAdulto= " + this.isAdulto() +
                 ", estudio='" + estudio + '\'' +
                 ", diretores=" + diretores +
                 ", generos=" + generos +

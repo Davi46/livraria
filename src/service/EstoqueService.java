@@ -2,7 +2,6 @@ package service;
 
 import model.*;
 import repository.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ public class EstoqueService {
     private static FilmeEstoqueRepository estoqueFilmes;
     private static JogoEstoqueRepository estoqueJogos;
     private static LivroEstoqueRepository estoqueLivros;
-
     private static List<Produto> estoqueGeral;
 
     public EstoqueService() {
@@ -24,8 +22,6 @@ public class EstoqueService {
 
         carregarEstoqueGeral();
     }
-
-
 
     public static void carregarEstoqueGeral(){
         estoqueGeral = new ArrayList<>();

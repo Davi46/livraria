@@ -21,8 +21,8 @@ public class FilmeEstoqueRepository extends EstoqueRepository<Filme>{
         produtores.add("Caio Gullane");
         produtores.add("Fabiano Gullane");
 
-        Filme filme1 = new Filme("Até que a sorte nos separe", 1, 50, TipoProduto.FILME, "Paris Filmes", diretores,generos, produtores);
-        Filme filme2 = new Filme("Até que a sorte nos separe2", 3, 50, TipoProduto.FILME, "Paris Filmes", diretores,generos, produtores);
+        Filme filme1 = new Filme("Até que a sorte nos separe", 1, 50, TipoProduto.FILME, "Paris Filmes", diretores,generos, produtores, false);
+        Filme filme2 = new Filme("Até que a sorte nos separe2", 3, 50, TipoProduto.FILME, "Paris Filmes", diretores,generos, produtores, false);
 
         addProduto(filme1);
         addProduto(filme1);

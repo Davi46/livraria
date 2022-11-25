@@ -5,8 +5,8 @@ public class Jogo extends Produto{
     private Genero genero;
     private String estudio;
 
-    public Jogo(String nome, int id, double valor, TipoProduto tipoProduto, String distribuidora, Genero genero, String estudio) {
-        super(nome, id, valor, tipoProduto);
+    public Jogo(String nome, int id, double valor, TipoProduto tipoProduto, String distribuidora, Genero genero, String estudio, boolean isAdulto) {
+        super(nome, id, valor, tipoProduto, isAdulto);
         this.distribuidora = distribuidora;
         this.genero = genero;
         this.estudio = estudio;
@@ -43,6 +43,7 @@ public class Jogo extends Produto{
                 ", id=" + this.getId() +
                 ", valor=" + this.getValor() +
                 ", tipoProduto=" + this.getTipoProduto() +
+                ", isAdulto= " + this.isAdulto() +
                 ", distribuidora='" + distribuidora + '\'' +
                 ", genero='" + genero + '\'' +
                 ", estudio='" + estudio + '\'' +

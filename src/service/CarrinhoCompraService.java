@@ -1,22 +1,29 @@
 package service;
 
 import model.Caixa;
+import model.Cliente;
 import model.Produto;
-import model.TipoProduto;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoCompraService {
-    private static Caixa caixa;
+    private static CaixaService caixaService;
     private static EstoqueService estoqueService;
-    private double valorCompra;
     private List<Produto> produtosComprados;
 
-    public CarrinhoCompraService(Caixa caixa) {
-        this.caixa = caixa;
-        this.estoqueService = new EstoqueService();
+    private Cliente cliente;
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public CarrinhoCompraService() {
+        this.estoqueService = new EstoqueService();
+        this.caixaService = new CaixaService(new Caixa());
         produtosComprados = new ArrayList<>();
 
         System.out.println("*--------------------ESTOQUE INICIAL--------------------*");
@@ -25,18 +32,19 @@ public class CarrinhoCompraService {
     }
 
     public void addItemCarrinho(int idProduto, int quantidade) throws Exception {
-        for(int i =0; i < quantidade; i++){
-            Produto produto = estoqueService.getProduto(idProduto);
-            if(produto == null){
-                throw new Exception("Item não contém no estoque. Favor escolher novo produto");
-            }
+        Produto produto = estoqueService.getProduto(idProduto);
 
+        if(produto == null){
+            throw new Exception("Item não contém no estoque. Favor escolher novo produto");
+        }
+
+        ClienteValidacaoService.validaProdutoAdulto(produto, this.cliente);
+
+        for(int i =0; i < quantidade; i++){
             produtosComprados.add(produto);
-            valorCompra += produto.getValor();
             estoqueService.removerProduto(produto);
         }
     }
-
     public void removerItemCarrinho(int idProduto, int quantidade){
         Produto produto = getProdutoCarrinho(idProduto);
         for(int i =0; i < quantidade; i++){
@@ -54,18 +62,7 @@ public class CarrinhoCompraService {
         return null;
     }
 
-    public void checkout(){
-        caixa.addEntrada(valorCompra);
-
-        System.out.println("*--------------------RESUMO DA COMPRA--------------------*");
-        System.out.println("Total de itens comprados:" + produtosComprados.size());
-        System.out.println("*--------------------ITENS COMPRADOS--------------------*");
-        produtosComprados.forEach(p -> System.out.println("Produto: " + p.getNome() + " - Valor: R$" + p.getValor()));
-        System.out.println("VALOR TOTAL DA COMPRA: R$" + this.valorCompra);
-        System.out.println("*--------------------------------------------------------------------*");
-
-        System.out.println("*--------------------ESTOQUE FINAL--------------------*");
-        estoqueService.listarEstoque();
-        System.out.println("*--------------------------------------------------------------------*");
+    public void checkout() throws Exception {
+        caixaService.realizarCompra(this.produtosComprados);
     }
 }
