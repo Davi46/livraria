@@ -4,21 +4,19 @@ import model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EstoqueRepository <T extends Produto>{
+public class EstoqueRepository <T extends Produto> implements  IRepository<T>{
     private List<T> produtos;
 
     public EstoqueRepository() {
         this.produtos = new ArrayList<>();
     }
 
-    public void setProdutos(List<T> produtos) {
-        this.produtos = produtos;
-    }
-
+    @Override
     public List<T> getProdutos() {
         return produtos;
     }
 
+    @Override
     public T getProduto(int id){
         for(T t : produtos){
             if(t.getId() == id){
@@ -28,11 +26,23 @@ public class EstoqueRepository <T extends Produto>{
         return null;
     }
 
+    @Override
     public void addProduto(T produto){
         produtos.add(produto);
     }
 
+    @Override
     public boolean deleteProduto(T produto){
         return produtos.remove(produto);
+    }
+
+    @Override
+    public void alterarProduto(T produto) {
+        for(T t : produtos){
+            if(t.getId() == produto.getId()){
+                deleteProduto(t);
+                addProduto(produto);
+            }
+        }
     }
 }

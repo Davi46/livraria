@@ -1,64 +1,31 @@
 package service;
 
 import model.*;
-import repository.EstoqueRepository;
+import repository.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class EstoqueService {
-    private static EstoqueRepository<AlbumMusica> estoqueAlbunsMusicas;
-    private static EstoqueRepository<Brinquedo> estoqueBrinquedos;
-    private static EstoqueRepository<Filme> estoqueFilmes;
-    private static EstoqueRepository<Jogo> estoqueJogos;
-    private static EstoqueRepository<Livro> estoqueLivros;
+    private static AlbumMusicaEstoqueRepository estoqueAlbunsMusicas;
+    private static BrinquedoEstoqueRepository estoqueBrinquedos;
+    private static FilmeEstoqueRepository estoqueFilmes;
+    private static JogoEstoqueRepository estoqueJogos;
+    private static LivroEstoqueRepository estoqueLivros;
 
     private static List<Produto> estoqueGeral;
 
     public EstoqueService() {
-        estoqueAlbunsMusicas = new EstoqueRepository();
-        estoqueBrinquedos= new EstoqueRepository();
-        estoqueFilmes = new EstoqueRepository();
-        estoqueJogos = new EstoqueRepository();
-        estoqueLivros= new EstoqueRepository();
+        estoqueAlbunsMusicas = new AlbumMusicaEstoqueRepository();
+        estoqueBrinquedos= new BrinquedoEstoqueRepository();
+        estoqueFilmes = new FilmeEstoqueRepository();
+        estoqueJogos = new JogoEstoqueRepository();
+        estoqueLivros= new LivroEstoqueRepository();
 
-        //Simulando uma carga do Banco de Dados
-        carregarEstoque();
         carregarEstoqueGeral();
     }
 
-    private void carregarEstoque() {
-        List<String> diretores = new ArrayList<>();
-        diretores.add("Roberto Sabtucci");
-        List<Genero> generos = new ArrayList<>();
-        generos.add(new Genero("Comedia"));
-        List<String> produtores = new ArrayList<>();
-        produtores.add("Caio Gullane");
-        produtores.add("Fabiano Gullane");
 
-        Filme filme1 = new Filme("Até que a sorte nos separe", 1, 50, TipoProduto.FILME, "Paris Filmes", diretores,generos, produtores);
-        Filme filme2 = new Filme("Até que a sorte nos separe2", 3, 50, TipoProduto.FILME, "Paris Filmes", diretores,generos, produtores);
-
-        Brinquedo carrinho = new Brinquedo("Carrinho", 2, 10, TipoProduto.BRINQUEDO, "Carrinho de controle remoto");
-        Brinquedo boneca = new Brinquedo("Boneca", 4, 10, TipoProduto.BRINQUEDO, "Boneca de plastico");
-
-        addProduto(filme1);
-        addProduto(filme1);
-        addProduto(filme1);
-        addProduto(filme1);
-        addProduto(filme2);
-        addProduto(filme2);
-        addProduto(filme2);
-        addProduto(filme2);
-        addProduto(carrinho);
-        addProduto(carrinho);
-        addProduto(carrinho);
-        addProduto(carrinho);
-        addProduto(boneca);
-        addProduto(boneca);
-        addProduto(boneca);
-        addProduto(boneca);
-        addProduto(boneca);
-    }
 
     public static void carregarEstoqueGeral(){
         estoqueGeral = new ArrayList<>();
