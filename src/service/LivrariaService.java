@@ -1,10 +1,11 @@
 package service;
 
+import model.Cliente;
+
 public class LivrariaService {
      private CarrinhoCompraService carrinhoCompraService;
 
      public LivrariaService() {
-          this.carrinhoCompraService = carrinhoCompraService;
      }
 
      public void novaCompra(){
@@ -17,6 +18,10 @@ public class LivrariaService {
           } catch (Exception e) {
                System.out.println(e.getMessage());
           }
+     }
+
+     public void addCliente(Cliente cliente){
+          carrinhoCompraService.setCliente(cliente);
      }
 
      public void finalizarCompra() throws Exception {

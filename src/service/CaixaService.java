@@ -43,7 +43,6 @@ public class CaixaService {
         return valorDesconto;
     }
 
-
     private void imprimirCompra(List<Produto> produtosComprados, double valorCompra, double valorDesconto) {
         System.out.println("*--------------------RESUMO DA COMPRA--------------------*");
         System.out.println("Total de itens comprados:" + produtosComprados.size());

@@ -128,14 +128,14 @@ public class EstoqueService {
         System.out.println("*--------------------------------------------------------------------*");
 
         System.out.println("*---------------------------JOGOS------------------------------------*");
-        System.out.println("Total de Albuns de Música no Estoque:" + getItensPorTipo(TipoProduto.ALBUM_MUSICA).size());
+        System.out.println("Total de Jogos no Estoque:" + getItensPorTipo(TipoProduto.JOGO).size());
 
         System.out.println("*----------------------LISTA DE JOGOS--------------------------------*");
         getItensPorTipo(TipoProduto.JOGO).forEach(p -> System.out.println(p.toString()));
         System.out.println("*--------------------------------------------------------------------*");
 
         System.out.println("*------------------------------LIVROS--------------------------------*");
-        System.out.println("Total de Filmes no Estoque:" + getItensPorTipo(TipoProduto.FILME).size());
+        System.out.println("Total de Livros:" + getItensPorTipo(TipoProduto.LIVRO).size());
 
         System.out.println("*--------------------------LISTA DE LIVROS---------------------------*");
         getItensPorTipo(TipoProduto.LIVRO).forEach(p -> System.out.println(p.toString()));
