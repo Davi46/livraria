@@ -3,7 +3,7 @@ import service.LivrariaService;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) throws Exceptio { 
+    public static void main(String[] args) throws Exception {
         
         LivrariaService livrariaService = new LivrariaService();
         livrariaService.novaCompra();
