@@ -3,17 +3,16 @@ package service;
 import model.Caixa;
 import model.Produto;
 import model.TipoDesconto;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class CaixaService {
+public class CaixaService implements  ICaixaService{
     private static Caixa caixa;
 
-    public CaixaService(Caixa caixa){
-        this.caixa = caixa;
+    public CaixaService(){
+        this.caixa = new Caixa();
     }
 
+    @Override
     public void realizarCompra(List<Produto> produtos) throws Exception {
         double valorCompra= calcularValorTotal(produtos);
         double valorDesconto = verificaEAplicaDescontos(produtos, valorCompra);

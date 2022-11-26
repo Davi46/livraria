@@ -3,7 +3,7 @@ package service;
 import model.Cliente;
 
 public class LivrariaService {
-     private CarrinhoCompraService carrinhoCompraService;
+     private ICarrinhoCompraService carrinhoCompraService;
 
      public LivrariaService() {
      }

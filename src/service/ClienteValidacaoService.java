@@ -16,7 +16,7 @@ public class ClienteValidacaoService {
         return isValid;
     }
 
-    public static boolean validaMair18Anos(Cliente cliente){
+    private static boolean validaMair18Anos(Cliente cliente){
         return cliente.getIdade()>=18;
     }
 

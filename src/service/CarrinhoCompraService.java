@@ -6,24 +6,21 @@ import model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarrinhoCompraService {
-    private static CaixaService caixaService;
+public class CarrinhoCompraService implements  ICarrinhoCompraService{
+    private static ICaixaService caixaService;
     private static EstoqueService estoqueService;
     private List<Produto> produtosComprados;
 
     private Cliente cliente;
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
+    @Override
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
     public CarrinhoCompraService() {
         this.estoqueService = new EstoqueService();
-        this.caixaService = new CaixaService(new Caixa());
+        this.caixaService = new CaixaService();
         produtosComprados = new ArrayList<>();
 
         System.out.println("*--------------------ESTOQUE INICIAL--------------------*");
@@ -31,6 +28,7 @@ public class CarrinhoCompraService {
         System.out.println("*--------------------------------------------------------------------*");
     }
 
+    @Override
     public void addItemCarrinho(int idProduto, int quantidade) throws Exception {
         Produto produto = estoqueService.getProduto(idProduto);
 
@@ -45,6 +43,8 @@ public class CarrinhoCompraService {
             estoqueService.removerProduto(produto);
         }
     }
+
+    @Override
     public void removerItemCarrinho(int idProduto, int quantidade){
         Produto produto = getProdutoCarrinho(idProduto);
         for(int i =0; i < quantidade; i++){
@@ -53,6 +53,7 @@ public class CarrinhoCompraService {
         }
     }
 
+    @Override
     public Produto getProdutoCarrinho(int idProduto){
         for(Produto t : produtosComprados){
             if(t.getId() == idProduto){
@@ -62,6 +63,7 @@ public class CarrinhoCompraService {
         return null;
     }
 
+    @Override
     public void checkout() throws Exception {
         caixaService.realizarCompra(this.produtosComprados);
     }

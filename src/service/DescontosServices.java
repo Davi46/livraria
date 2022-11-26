@@ -18,7 +18,7 @@ public class DescontosServices {
         return descontosAptos;
     }
 
-    public static boolean validaDescontoLivros(List<Produto> produtos) {
+    private static boolean validaDescontoLivros(List<Produto> produtos) {
         double valorTotalLivros = 0;
         for (Produto p: produtos) {
             if(p.getTipoProduto() == TipoProduto.LIVRO){
